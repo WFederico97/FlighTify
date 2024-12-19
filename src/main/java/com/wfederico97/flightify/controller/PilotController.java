@@ -28,7 +28,7 @@ public class PilotController {
     public List<PilotModel> getAllPilots(Model model) {
          return service.returnAllPilotPosts();
     }
-    @GetMapping(path = "/pilot/{id}",consumes = "application/json",name = "pilot")
+    @GetMapping(path = "/pilot/{id}",name = "pilot")
     public PilotModel getPilotById(@PathVariable int id) {
         return service.getPilotById(id);
     }
@@ -39,6 +39,12 @@ public class PilotController {
     @DeleteMapping(path = "/deletePilot/{id}",name = "deletePilot")
     public void deletePilot(@PathVariable int id) {
         service.deletePilot(id);
+    }
+
+    @GetMapping("load")
+    public String loadData(){
+        service.load();
+        return "Success";
     }
 
 }
